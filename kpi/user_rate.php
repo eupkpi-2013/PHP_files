@@ -22,9 +22,10 @@
 		<table>
 		<?php		
 			if($checker!='empty'):
+				$ctr = 0;
 				foreach ($metric as $metric_item): 
 		
-				
+				 
 				 foreach ($subkpi as $subkpi_item): 
 						 
 							if($subkpi_item['kpi_id']==$metric_item['kpi_id'])
@@ -36,9 +37,14 @@
 									}
 								endforeach;
 								
-								echo "<h2>".$parent." > ".$subkpi_item['kpi_name']."</h2>";
+								if($ctr==0)
+								{
+									echo "<h2>".$parent." > ".$subkpi_item['kpi_name']."</h2>";
+									$ctr = 1;
+								}
+							
 					         }
-						
+					
 				 endforeach; 
 				
 				

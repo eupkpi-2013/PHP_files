@@ -8,12 +8,27 @@
 	
 	<div id="user-inside" class="lefted">
 		<?php 
-			if($checker!='empty'): 
-				foreach ($verifyvalue as $verifyvalue_item):
+			if($checker!='empty'):
 				
-					echo "blahblah";
-	
-			 endforeach;
+				foreach ($kpi as $kpi_item):
+					echo "<div class='ratingsdiv'> <h3>".$kpi_item['kpi_name']."</h3>";
+						foreach ($subkpi as $subkpi_item):
+							if($subkpi_item['parent_kpi']==$kpi_item['kpi_id'])
+							{
+								echo "<div>".$subkpi_item['kpi_name']."<table>";
+									foreach ($metric as $metric_item):
+										if($metric_item['kpi_id']==$subkpi_item['kpi_id'])
+										{
+											echo "<tr>";
+											echo "<td>".$metric_item['field_name']."</td>";
+											echo "<tr>";
+										}
+									endforeach;
+								echo "</table></div>";
+							}
+						endforeach;
+					echo "</div>";
+				endforeach;
 		
 			else:
 				echo "<h2>eUP KPI: After 2 months</h2><p>Choose a User on the left.</p><br>";

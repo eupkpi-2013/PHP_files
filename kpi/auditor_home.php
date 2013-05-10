@@ -2,9 +2,10 @@
 	<h1>Welcome, Auditor</h1>
 	<div>
 		<ul>Unverified KPI submissions:
-		<li><a href="auditor_verify_user001.html">User001</a></li>
-		<li><a href="auditor_verify_user002.html">User002</a></li>
-		<li><a href="auditor_verify_user003.html">User003</a></li>
+		<?php foreach ($update as $update_item):
+				echo "<li><a href='verify?q=auditor_verify_".$update_item['update_value']."'>".$update_item['update_value']."</a></li>";
+		      endforeach;
+		?>
 		</ul>
 	</div>
 	<div>
