@@ -1,3 +1,17 @@
+<?php
+	echo "<script type='text/javascript'>";
+	foreach ($metric as $metric_item): 
+		echo "$(document).ready(function(){
+
+
+			   $('#metric".$metric_item['field_id']."-viewprev-button').click(function(){
+			   $('.metric".$metric_item['field_id']."-prev').toggle();});
+			   
+			   });";
+	endforeach; 
+	echo "</script>";
+?>
+
 <div id="user-contents" class="contents">	
 	<div id="user-kpimenu" class="accordion lefted">
 		<?php foreach ($kpi as $kpi_item): 
@@ -48,7 +62,11 @@
 				 endforeach; 
 				
 				
-					echo "<tr><td>".$metric_item['field_name']."<td><td><input type='text'></input></td></tr>";
+					echo "<tr><td>".$metric_item['field_name']."<td><td><input type='text'></input></td><td>
+					      <button id='metric".$metric_item['field_id']."-viewprev-button'>View Previous Ratings</button></td></tr>
+						  <tr class='hidden metric".$metric_item['field_id']."-prev'><td>Baseline</td><td>500</td></tr>
+						  <tr class='hidden metric".$metric_item['field_id']."-prev'><td>Target</td>
+						  <td>200</td></tr><tr class='hidden metric".$metric_item['field_id']."-prev'><td>Migration</td><td>500</td></tr>";
 				
 			     endforeach;		
 		
