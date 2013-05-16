@@ -2,14 +2,7 @@
 	
 	<div id="user-kpimenu" class="accordion lefted">
 	<?php foreach ($userid as $userid_item): 
-			
-		  foreach ($results as $results_item):	
-			if($userid_item['results_id']==$results_item['results_id'])
-			{
-				echo "<div><a href='verify?q=auditor_verify_".$userid_item['user_id']."'><h3>".$userid_item['user_id']."</h3></a></div>"; 
-			}
-		  endforeach;
-		  
+				echo "<div><a href='verify?q=auditor_verify_".$userid_item['user_id']."'><h3>".$userid_item['user_id']."</h3></a></div>";  
 		  endforeach; ?>
 	</div>
 	
@@ -28,6 +21,11 @@
 										{
 											echo "<tr>";
 											echo "<td>".$metric_item['field_name']."</td>";
+											
+											if($user_id==$metric_item['user_id'])
+											{
+												echo "<td>".$metric_item['value']."</td>";
+											}
 											echo "<tr>";
 										}
 									endforeach;

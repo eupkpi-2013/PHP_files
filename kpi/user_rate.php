@@ -34,7 +34,11 @@
 	
 	<div id="user-inside" class="lefted">
 		<table>
-		<?php		
+		<?php
+
+			//user-id
+			$user_id = 4;
+			
 			if($checker!='empty'):
 				$ctr = 0;
 				foreach ($metric as $metric_item): 
@@ -63,10 +67,17 @@
 				
 				
 					echo "<tr><td>".$metric_item['field_name']."<td><td><input type='text'></input></td><td>
-					      <button id='metric".$metric_item['field_id']."-viewprev-button'>View Previous Ratings</button></td></tr>
-						  <tr class='hidden metric".$metric_item['field_id']."-prev'><td>Baseline</td><td>500</td></tr>
-						  <tr class='hidden metric".$metric_item['field_id']."-prev'><td>Target</td>
-						  <td>200</td></tr><tr class='hidden metric".$metric_item['field_id']."-prev'><td>Migration</td><td>500</td></tr>";
+					      <button id='metric".$metric_item['field_id']."-viewprev-button'>View Previous Ratings</button></td></tr>";
+						  
+						  foreach($period as $period_item):
+							foreach ($metric_values as $metric_values_item): 
+								if(($metric_item['field_id']==$metric_values_item['field_id']) && ($user_id==$metric_values_item['user_id']))
+								{
+								echo "<tr class='hidden metric".$metric_item['field_id']."-prev'><td>".$period_item['results_name']."</td>
+								      <td>".$metric_values_item['value']."</td></tr>";
+								}
+							endforeach;
+						  endforeach;
 				
 			     endforeach;		
 		
