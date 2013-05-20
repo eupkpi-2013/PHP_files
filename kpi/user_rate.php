@@ -1,13 +1,13 @@
 <?php
 	echo "<script type='text/javascript'>";
 	foreach ($metric as $metric_item): 
-		echo "$(document).ready(function()
-			{
-			$('#metric".$metric_item['field_id']."-viewprev-button').click(function()
-				{
-				$('.metric".$metric_item['field_id']."-prev').toggle();
-				});
-			});";
+		echo "$(document).ready(function(){
+
+
+			   $('#metric".$metric_item['field_id']."-viewprev-button').click(function(){
+			   $('.metric".$metric_item['field_id']."-prev').toggle();});
+			   
+			   });";
 	endforeach; 
 	echo "</script>";
 ?>
@@ -42,30 +42,34 @@
 			if($checker!='empty'):
 				$ctr = 0;
 				foreach ($metric as $metric_item): 
-					foreach ($subkpi as $subkpi_item): 
-						if($subkpi_item['kpi_id']==$metric_item['kpi_id'])
-						{
-							foreach ($kpi as $kpi_item):
-								if($kpi_item['kpi_id']==$subkpi_item['parent_kpi'])
+		
+				 
+				 foreach ($subkpi as $subkpi_item): 
+						 
+							if($subkpi_item['kpi_id']==$metric_item['kpi_id'])
+							 {
+								foreach ($kpi as $kpi_item):
+									if($kpi_item['kpi_id']==$subkpi_item['parent_kpi'])
+									{
+										$parent = $kpi_item['kpi_name'];
+									}
+								endforeach;
+								
+								if($ctr==0)
 								{
-									$parent = $kpi_item['kpi_name'];
+									echo "<h2>".$parent." > ".$subkpi_item['kpi_name']."</h2>";
+									$ctr = 1;
 								}
-							endforeach;
 							
-							if($ctr==0)
-							{
-								echo "<h2>".$parent." > ".$subkpi_item['kpi_name']."</h2>";
-								$ctr = 1;
-							}
-						
-						}
-					endforeach; 
+					         }
+					
+				 endforeach; 
 				
 				
 					echo "<tr><td>".$metric_item['field_name']."<td><td><input type='text'></input></td><td>
 					      <button id='metric".$metric_item['field_id']."-viewprev-button'>View Previous Ratings</button></td></tr>";
 						  
-						foreach($period as $period_item):
+						  foreach($period as $period_item):
 							foreach ($metric_values as $metric_values_item): 
 								if(($metric_item['field_id']==$metric_values_item['field_id']) && ($user_id==$metric_values_item['user_id']))
 								{
@@ -73,9 +77,9 @@
 								      <td>".$metric_values_item['value']."</td></tr>";
 								}
 							endforeach;
-						endforeach;
+						  endforeach;
 				
-			    endforeach;		
+			     endforeach;		
 		
 			else:
 				echo "<h2>eUP KPI: After 2 months</h2><p>Choose a KPI on the left.</p><br><button>View your previous ratings</button>";
