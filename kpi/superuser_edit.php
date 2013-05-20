@@ -64,10 +64,10 @@
 				$subkpi_id = str_replace("_", " ", $subkpi_id);
 				
 				echo "<h2>".$kpi_id." > ".$subkpi_id."</h2>";
-				echo "<form method='post' action='changevalue'>";
-				echo "<label>".$kpi_id."</label><input value='".$kpi_id."' name='kpi'></input><input type='hidden' value='".$kpi_value_id['kpi_id']."' name='kpi_id'></input>";
-				echo "<label>".$subkpi_id."</label><input value='".$subkpi_id."' name='subkpi'></input><input type='hidden' value='".$subkpi_value_id['kpi_id']."' name='subkpi_id'></input>";
-				echo "<table class='kpitable'>
+				echo "<form method='post' action='changevalue'><table>";
+				echo "<tr><td><label>".$kpi_id."</label><input value='".$kpi_id."' name='kpi'></input><input type='hidden' value='".$kpi_value_id['kpi_id']."' name='kpi_id'></input></td><td><a href='deactivate?q=1/".$kpi_value_id['kpi_id']."'><input type='button'>Deactivate</input></a></td></tr>";
+				echo "<tr><td><label>".$subkpi_id."</label><input value='".$subkpi_id."' name='subkpi'></input><input type='hidden' value='".$subkpi_value_id['kpi_id']."' name='subkpi_id'></input></td><td><a href='deactivate?q=2/".$subkpi_value_id['kpi_id']."'><input type='button'>Deactivate</input></a></td></tr>";
+				echo "</table><table class='kpitable'>
 					  <tr><th>Metric Name</th>
 					  <th>Data Type</th></tr>";
 						foreach($metric as $metric_item2):
@@ -77,14 +77,15 @@
 									  <option>Integer</option>
 									  <option>Boolean</option>
 									  <option>Time Range</option>
-									  </select>
+									  </select></td> 
+								  <td><a href='deactivate?q=3/".$metric_item2['field_id']."'><input type='button'>Deactivate</input></a>
 								  </td></tr>";
 						endforeach;
 				echo "</table>";
 				echo "<button class='righted'>Save</button></form>";
 			else:
 				echo "<p>Choose a KPI on the left.</p><br>
-					  <a href=''><button>Add KPI</button></a>";
+					  <button>Add KPI</button>";
 			endif;
 		?>
 	</div>
