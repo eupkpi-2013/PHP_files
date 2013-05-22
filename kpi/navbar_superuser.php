@@ -1,11 +1,19 @@
-		<div id="user-nav">
+		<div id="user-nav" class="nav">
 			<ul>
-			<li id="user-home"><a href="superuser_home.html">Home</a></li>
-			<li id="user-rate"><a href="superuser_kpis.html">KPIs</a></li>
-			<li id="user-rate"><a href="superuser_accounts.html">Accounts</a></li>
-			<li id="user-rate"><a href="superuser_targets.html">Targets</a></li>
-			<li id="user-results"><a href="superuser_results.html">Results</a></li>
+			<li id="superuser_home"><a href="superuser_home">Home</a></li>
+			<li id="superuser_KPIs"><a href="superuser_edit">KPIs</a></li>
+			<li id="superuser_activate"><a href="superuser_activate">Activate KPIs</a></li>
+			<li id="superuser_accounts"><a href="superuser_accounts">Accounts</a></li>
+			<li id="superuser_results"><a href="superuser_results">Results</a></li>
 			</ul>
 		</div>
 	</header>
 </div>
+
+<?php
+	echo '<script>
+		$(document).ready( function() {
+			$(\'.alert\').delay(7000).fadeOut();
+		})
+		</script>';
+?>

@@ -13,9 +13,9 @@
 	</div>
 	<div>
 		<ul>Recent reports:
-		<li><a href="auditor_results.html">Report1</a></li>
-		<li><a href="auditor_results.html">Report2</a></li>
-		<li><a href="auditor_results.html">Report3</a></li>
+		<li><a href="auditor_results">Report1</a></li>
+		<li><a href="auditor_results">Report2</a></li>
+		<li><a href="auditor_results">Report3</a></li>
 		</ul>
 	</div>
 </div>
