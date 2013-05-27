@@ -24,8 +24,13 @@
 				foreach ($subkpi as $subkpi_item):
 					if ($subkpi_item['parent_kpi']==$kpi_item['kpi_id']):
 						echo "<div>".$subkpi_item['kpi_name'];
-						echo "<table class='table-lined'><tr><td>";
-						echo "</td></tr></table></div>";
+						echo "<table class='table-lined'>";
+						foreach($fieldvalues as $fv){
+							if($fv['kpi_id'] == $subkpi_item['kpi_id']){
+								echo "<tr><td>".$fv['field_name']."</td><td>".$fv['value']."</td></tr>";
+							}
+						}
+						echo "</table></div><br>";
 					endif;
 				endforeach;
 			endforeach;
@@ -33,6 +38,6 @@
 		</div>
 	</div>
 	<form action="submit">
-	<button id="submitKPI-button" class="righted submitKPI">Submit for Verification</button>
+	<button id="submitKPI-button" class="righted button-green submitKPI">Submit for Verification</button>
 	</form>
 </div>

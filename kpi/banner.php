@@ -7,10 +7,6 @@
 		</div>
 		</a>
 		<div id="user-logout" class="logout righted">
-			<a href="">Logged in as 
-            <?php
-				echo "".$this->session->userdata('email');
-			?>
-			</a>
-			<a href="logout">Logout</a>
+			Logged in as User
+			<a href="index"><button class="button-green">Logout</button></a>
 		</div>

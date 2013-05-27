@@ -43,10 +43,14 @@
 			if($checker!='empty'):
 				echo "<h2>".$current_kpi." > ".$current_subkpi."</h2>";
 				$count = 0;
-				if (isset($next)): echo form_open('rate?q='.$next); endif;
+				if (isset($next)) echo form_open('rate?q='.$next);
+				else echo form_open('user_rated');
+				
 				foreach ($metric as $metric_item): 
 					
-					echo "<tr><td>".$metric_item['field_name']."</td><td><input type='text' name='answer".++$count."' id='answer".$count."'></input></td><td><button type='button' id='metric".$metric_item['field_id']."-viewprev-button'>View Previous Ratings</button></td></tr>";
+					// echo "<tr><td>".$metric_item['field_name']."</td><td><input type='number' name='answer".++$count."' id='answer".$count."'></input></td><td><button type='button' id='metric".$metric_item['field_id']."-viewprev-button'>View Previous Ratings</button></td></tr>";
+					echo "<tr><td>".$metric_item['field_name']."</td><td><input type='number' name='answer".$metric_item['field_id']."' id='answer".$metric_item['field_id']."' value='".$metric_value[$count]."'></input></td><td><button type='button' id='metric".$metric_item['field_id']."-viewprev-button'>View Previous Ratings</button></td></tr>";
+					$count++;
 					foreach ($period as $period_item):
 						foreach ($metric_values as $metric_values_item):
 							if (($metric_item['field_id']==$metric_values_item['field_id']) && ($user_id==$metric_values_item['user_id']) && $metric_values_item['results_id']==$period_item['results_id'])
@@ -56,7 +60,7 @@
 			    endforeach;
 				//if (isset($next)): echo form_close(); endif;
 			else:
-				echo "<h2>eUP KPI: After 2 months</h2><div class='alert alert-red'>You have not yet started rating. Choose a KPI on the left to start.</div><p>Choose a KPI on the left.</p><br><button>View your previous ratings</button>";
+				echo "<h2>eUP KPI: After 2 months</h2><div class='alert alert-red'>You have not yet started rating. Choose a KPI on the left to start.</div><br><button>View your previous ratings</button>";
 		    endif;
 		?>
 		</table>
